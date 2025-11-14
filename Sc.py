@@ -19,3 +19,4 @@ def calculate_average_score():
         print(f"平均分數為: {average_score:.2f}")
     else:
         print("沒有輸入任何分數")
+calculate_average_score()
