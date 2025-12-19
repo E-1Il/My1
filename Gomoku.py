@@ -1,6 +1,9 @@
 # 五子棋遊戲
 # 五子棋（Gomoku）遊戲規則與實作
 
+# 遊戲常數
+BOARD_SIZE = 15  # 標準五子棋棋盤大小
+
 # 五子棋介紹：
 # 五子棋是一種兩人對弈的策略棋盤遊戲，起源於中國古代。
 # 英文名稱為 Gomoku 或 Five in a Row（五子連珠）。
@@ -92,9 +95,8 @@ def gomoku_game():
     """
     五子棋遊戲主程式
     """
-    # 初始化棋盤大小
-    board_size = 15
-    board = [[0 for _ in range(board_size)] for _ in range(board_size)]
+    # 初始化棋盤
+    board = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
     
     current_player = 1  # 1 代表黑子，2 代表白子
     player_names = {1: "黑方(●)", 2: "白方(○)"}
@@ -128,8 +130,8 @@ def gomoku_game():
             row, col = int(parts[0]), int(parts[1])
             
             # 檢查座標是否有效
-            if row < 0 or row >= board_size or col < 0 or col >= board_size:
-                print(f"座標超出範圍！請輸入 0 到 {board_size-1} 之間的數字。")
+            if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
+                print(f"座標超出範圍！請輸入 0 到 {BOARD_SIZE-1} 之間的數字。")
                 continue
             
             # 檢查位置是否已被佔據
@@ -156,7 +158,7 @@ def gomoku_game():
                 break
             
             # 切換玩家
-            current_player = 3 - current_player  # 在1和2之間切換
+            current_player = 2 if current_player == 1 else 1
             
         except ValueError:
             print("請輸入有效的整數座標！")
